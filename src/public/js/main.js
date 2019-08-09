@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     $('#Resultados').hide();
+    $('#mensaje').hide();
     
     if ($('#Primera').attr('disable') == 'no') {
         $('#Primera').removeClass('disabled');
@@ -43,19 +44,39 @@ $(document).ready(function(){
                                     <td>${articulo.Precio}</td>
                                     <td>${articulo.Stock}</td>
                                     <td>
-                                        <button class="btn btn-warning"><i class="fa fa-edit"></i></button>
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <button class="btn btn-warning edit"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
                                     </td>
                                   </tr>`;
                 }
-
-                console.log(resultado);
                 
 
                 $('.busqueda').html(resultado);
                 
             }
         })
+    });
+
+
+    $('.delete').click(function (e) {
+        e.preventDefault();
+        if (confirm("Estas seguro de eliminar el articulo?")) {
+            var fila = $(this)[0].parentElement.parentElement;
+            var url = $(this).attr('href');
+
+            $.ajax({
+                url,
+                type: 'DELETE',
+                success: function(res) {
+                    $(fila).fadeOut();
+                    
+                    $('#text').html(`El articulos <strong>${res[0].Nombre}</strong> ha sido eliminado`);
+                    $('#mensaje').show();
+                }
+            })
+        }
+        
+        
     });
     
 });

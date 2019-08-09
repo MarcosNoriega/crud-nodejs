@@ -19,4 +19,11 @@ articulosController.search = async (req, res) => {
     res.json(articulos);
 }
 
+articulosController.delete = async (req, res) => {
+    const id = req.params.id;
+    const articulo = await Articulos.deleteById(id);
+
+    res.json(articulo);
+}
+
 module.exports = articulosController;

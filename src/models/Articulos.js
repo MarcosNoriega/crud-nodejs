@@ -23,4 +23,19 @@ Articulos.findTermino = async (termino) => {
     return await pool.query(`SELECT * FROM Articulos WHERE nombre LIKE '%${termino}%'`)
 }
 
+Articulos.deleteById = async id => {
+    var articulo = await pool.query(`SELECT * FROM Articulos WHERE IdArticulos = ${id}`);
+    await pool.query(`DELETE FROM Articulos WHERE IdArticulos = ${id}`);
+
+    return articulo;
+}
+
+Articulos.editById = async (id, articulo) => {
+    await pool.query(`UPDATE Articulos SET Nombre = ${articulo.Nombre}, Precio = ${articulo.Precio}, Stock = ${articusl.Stock} WHERE IdArticulos = ${id}`);
+}
+
+Articulos.findById = async id => {
+    return pool.query(`SELECT * FROM Aticulos WHERE IdArticulos = ${id}`);
+}
+
 module.exports = Articulos;
