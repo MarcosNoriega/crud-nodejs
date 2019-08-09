@@ -2,9 +2,21 @@ const Articulos = require('../models/Articulos');
 const articulosController = {};
 
 articulosController.index = async (req, res) => {
-    const articulos = await Articulos.all();
+    const pagina = req.params.pagina;
+    let cantArt = 15;
+    let offset = (pagina - 1) * cantArt;
+    const articulos = await Articulos.paginate(cantArt, offset);
+    let ultimaPag = Math.round(await Articulos.count() / cantArt);
+    
 
-    res.render('articulos/index.hbs', {articulos});
+    res.render('articulos/index.hbs', {articulos, pagina, ultimaPag});
 };
+
+articulosController.search = async (req, res) => {
+    const termino = req.body.termino;
+    const articulos = await Articulos.findTermino(termino);
+
+    res.json(articulos);
+}
 
 module.exports = articulosController;
