@@ -30,12 +30,12 @@ Articulos.deleteById = async id => {
     return articulo;
 }
 
-Articulos.editById = async (id, articulo) => {
-    await pool.query(`UPDATE Articulos SET Nombre = ${articulo.Nombre}, Precio = ${articulo.Precio}, Stock = ${articusl.Stock} WHERE IdArticulos = ${id}`);
+Articulos.updateById = async (articulo) => {
+    await pool.query(`UPDATE Articulos SET Nombre = '${articulo.Nombre}', Precio = ${articulo.Precio}, Stock = ${articulo.Stock} WHERE IdArticulos = ${articulo.id}`);
 }
 
 Articulos.findById = async id => {
-    return pool.query(`SELECT * FROM Aticulos WHERE IdArticulos = ${id}`);
+    return pool.query(`SELECT * FROM Articulos WHERE IdArticulos = ${id}`);
 }
 
 module.exports = Articulos;

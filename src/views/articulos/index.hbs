@@ -50,8 +50,45 @@
                         <td>{{Precio}}</td>
                         <td>{{Stock}}</td>
                         <td>
-                            <a class="btn btn-warning edit"><i class="fa fa-edit"></i></a>
+                            <a href="/articulos/edit/{{IdArticulos}}" class="btn btn-warning edit" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"></i></a>
                             <a href="/articulos/delete/{{IdArticulos}}" class="btn btn-danger delete"><i class="fa fa-trash"></i></a>
+                        
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar Articulo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="/articulos/update" method="POST">
+                                            <div class="modal-body">
+                                                <input type="hidden" name="id" id="txtId">
+                                                <div class="group-form">
+                                                    <label for="">Nombre</label>
+                                                    <input type="text" class="form-control" name="Nombre" id="txtNombre">
+                                                </div>
+
+                                                 <div class="group-form">
+                                                    <label for="">Precio</label>
+                                                    <input type="number" class="form-control" name="Precio" id="txtPrecio">
+                                                </div>
+
+                                                 <div class="group-form">
+                                                    <label for="">Stock</label>
+                                                    <input type="number" class="form-control" name="Stock" id="txtStock">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary save"><i class="fa fa-save"></i> Guardar Cambios</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     {{/each}}

@@ -78,5 +78,26 @@ $(document).ready(function(){
         
         
     });
+
+    $('.edit').click(function(e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        $.ajax({
+            url,
+            type: 'GET',
+            success: function(res) {
+                var articulo = res[0];
+
+                $('#txtId').val(articulo.IdArticulos);
+                $('#txtNombre').val(articulo.Nombre);
+                $('#txtPrecio').val(articulo.Precio);
+                $('#txtStock').val(articulo.Stock);
+            }
+        });
+
+    });
+
+
     
 });

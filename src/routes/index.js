@@ -5,6 +5,8 @@ const articulosController = require('../controllers/articulosController');
 
 router.get('/:pagina', articulosController.index);
 router.post('/buscar', articulosController.search);
-router.delete('/delete/:id', articulosController.delete)
+router.delete('/delete/:id', articulosController.delete);
+router.get('/edit/:id', articulosController.edit);
+router.post('/update', articulosController.update);
 
 module.exports = router;
