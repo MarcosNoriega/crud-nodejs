@@ -39,4 +39,10 @@ articulosController.update = async (req, res) => {
     res.redirect('/articulos/1');
 }
 
+articulosController.create = async (req, res) => {
+    await Articulos.add(req.body);
+
+    res.redirect('/articulos/1');
+}
+
 module.exports = articulosController;

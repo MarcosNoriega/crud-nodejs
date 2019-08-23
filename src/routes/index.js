@@ -8,5 +8,6 @@ router.post('/buscar', articulosController.search);
 router.delete('/delete/:id', articulosController.delete);
 router.get('/edit/:id', articulosController.edit);
 router.post('/update', articulosController.update);
+router.post('/create', articulosController.create);
 
 module.exports = router;

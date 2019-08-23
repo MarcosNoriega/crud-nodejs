@@ -38,4 +38,8 @@ Articulos.findById = async id => {
     return pool.query(`SELECT * FROM Articulos WHERE IdArticulos = ${id}`);
 }
 
+Articulos.add = async articulo => {
+    await pool.query(`INSERT INTO Articulos (Nombre, Precio, Stock) VALUE ('${articulo.Nombre}', ${articulo.Precio}, ${articulo.Stock})`);
+}
+
 module.exports = Articulos;
