@@ -18,17 +18,20 @@
                             <input type="hidden" name="id" id="txtId">
                             <div class="group-form">
                                 <label for="">Nombre</label>
-                                <input type="text" class="form-control" name="Nombre" id="">
+                                <input type="text" class="form-control" name="Nombre" id="nombreCreate">
                             </div>
         
                             <div class="group-form">
                                 <label for="">Precio</label>
-                                <input type="number" class="form-control" name="Precio" id="">
+                                <input type="number" class="form-control" name="Precio" id="precioCreate">
+                                <div class="invalid-menssage">
+                                    
+                                </div>
                             </div>
         
                             <div class="group-form">
                                 <label for="">Stock</label>
-                                <input type="number" class="form-control" name="Stock" id="">
+                                <input type="number" class="form-control" name="Stock" id="stockCreate">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -106,20 +109,20 @@
                                         </div>
                                         <form action="/articulos/update" method="POST">
                                             <div class="modal-body">
-                                                <input type="hidden" name="id" id="txtId">
+                                                <input type="hidden" name="id" id="IdUpdate">
                                                 <div class="group-form">
                                                     <label for="">Nombre</label>
-                                                    <input type="text" class="form-control" name="Nombre" id="txtNombre">
+                                                    <input type="text" class="form-control" name="Nombre" id="nombreUpdate">
                                                 </div>
 
                                                  <div class="group-form">
                                                     <label for="">Precio</label>
-                                                    <input type="number" class="form-control" name="Precio" id="txtPrecio">
+                                                    <input type="number" class="form-control" name="Precio" id="precioUpdate">
                                                 </div>
 
                                                  <div class="group-form">
                                                     <label for="">Stock</label>
-                                                    <input type="number" class="form-control" name="Stock" id="txtStock">
+                                                    <input type="number" class="form-control" name="Stock" id="stockUpdate">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

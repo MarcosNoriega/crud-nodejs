@@ -89,19 +89,76 @@ $(document).ready(function(){
             success: function(res) {
                 var articulo = res[0];
 
-                $('#txtId').val(articulo.IdArticulos);
-                $('#txtNombre').val(articulo.Nombre);
-                $('#txtPrecio').val(articulo.Precio);
-                $('#txtStock').val(articulo.Stock);
+                $('#IdUpdate').val(articulo.IdArticulos);
+                $('#nombreUpdate').val(articulo.Nombre);
+                $('#precioUpdate').val(articulo.Precio);
+                $('#stockUpdate').val(articulo.Stock);
             }
         });
 
     });
 
     $('.create').click(function(e) {
-        
+        validarForm("Create", e);
     });
 
+    $('.save').click(function(e){
+        validarForm("Update", e);
+    });
 
+    function validarForm(accion, e) {
+        var nombre = $(`#nombre${accion}`).val();
+        var precio = $(`#precio${accion}`).val();
+        var stock = $(`#stock${accion}`).val();
+
+        if (nombre === '') {
+            e.preventDefault();
+            $(`#nombre${accion}`).addClass('is-invalid');
+
+            if (!$('#nombre-menssage')[0]) {
+                $(`#nombre${accion}`).after('<div class="invalid-menssage" id="nombre-menssage">El nombre del articulo es necesario</div>');
+
+            }
+        }
+
+        if (precio === '') {
+            e.preventDefault();
+            $(`#precio${accion}`).addClass('is-invalid');
+
+            if (!$('#precio-menssage')[0]) {
+                $(`#precio${accion}`).after('<div class="invalid-menssage" id="precio-menssage">El precio del articulo es necesario</div>');
+            }
+            
+        }
+
+        if (stock === '') {
+            e.preventDefault();    
+            $(`#stock${accion}`).addClass('is-invalid');
+
+            if (!$('#stock-menssage')[0]) {
+                $(`#stock${accion}`).after('<div class="invalid-menssage" id="stock-menssage">El stock del articulo es necesario</div>');
+
+            }
+        }
+
+    }
+
+    $('#nombreCreate').change(function() {
+        $(this).removeClass('is-invalid');
+        $(this).addClass('is-valid');
+        $('#nombre-menssage').remove()
+    });
+
+    $('#precioCreate').change(function() {
+        $(this).removeClass('is-invalid');
+        $(this).addClass('is-valid');
+        $('#precio-menssage').remove()
+    });
+
+    $('#stockCreate').change(function() {
+        $(this).removeClass('is-invalid');
+        $(this).addClass('is-valid');
+        $('#stock-menssage').remove()
+    });
     
 });
